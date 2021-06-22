@@ -1,0 +1,14 @@
+{
+    "cSpell.ignoreWords": [
+        "cli",
+        "dev",
+        "js",
+        "modules",
+        "node",
+        "ormconfig",
+        "rocketseat",
+        "ts",
+        "typeorm",
+        "varchar"
+    ]
+}
