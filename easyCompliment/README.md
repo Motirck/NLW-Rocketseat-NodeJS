@@ -19,7 +19,7 @@ Next Level Week da Rocketseat - Nodejs
 
 > yarn add ts-node-dev -D (converte automaticamente ts para js)
 
->
+> yarn add typeorm reflect-metadata sqlite3
 
 ### Dicas gerais
 
@@ -36,3 +36,4 @@ Next Level Week da Rocketseat - Nodejs
     "dev": "ts-node-dev src/server.ts"
 }
 ```
+3) 
