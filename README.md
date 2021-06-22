@@ -22,6 +22,8 @@ Next Level Week da Rocketseat - Nodejs
 
 ### Necessary Commands
 
+> npm install --global yarn
+
 > yarn init -y
 
 > yarn add typescript -D (instala o ts apenas em desenvolvimento)
