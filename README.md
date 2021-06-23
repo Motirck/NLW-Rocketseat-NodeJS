@@ -55,6 +55,8 @@ Next Level Week da Rocketseat - Nodejs
 
 > yarn add @types/uuid -D
 
+> yarn add express-async-errors
+
 
 ### General Tips
 
