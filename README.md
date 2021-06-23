@@ -13,7 +13,7 @@ Next Level Week da Rocketseat - Nodejs
 - Tags Registration
     - It isn't allowed register more than one tag with the same name
     - It isn't allowed register user without name
-    - It isn't register a tag for non admin user
+    - It isn't allowed register a tag for non admin user
 
 - Compliment Registration
     - It isn't allowed an user register a compliment for yourself
@@ -21,6 +21,8 @@ Next Level Week da Rocketseat - Nodejs
     - The user must be authenticated on the application
 
 ### Necessary Commands
+
+> npm install --global yarn
 
 > yarn init -y
 
@@ -52,6 +54,14 @@ Next Level Week da Rocketseat - Nodejs
 > yarn add uuid
 
 > yarn add @types/uuid -D
+
+> yarn add express-async-errors
+
+> yarn typeorm migration:create -n CreateTags
+
+> yarn typeorm migration:run
+
+> yarn typeorm entity:create -n Tag
 
 
 ### General Tips
