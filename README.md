@@ -1,7 +1,11 @@
 ## Next Level Week 06 da Rocketseat - Nodejs 🚀🚀🚀
 ---
 
-### Next Level Week of Rocketseat - Mission Nodejs
+<h3 align="center">Next Level Week of Rocketseat - Mission Node.js> </h3>
+
+<p align="center">
+<img alt="Next Level Week Ticket - Ricardo" title="Next Level Week Ticket - Ricardo" src="https://user-images.githubusercontent.com/57419630/123095225-3b03e200-d404-11eb-826b-1e913d923f51.png"/>
+</p>
 
 ### **Status**: 🚧 In Progress 🚧
 
