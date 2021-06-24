@@ -1,4 +1,5 @@
 import { getCustomRepository } from "typeorm"
+import { ErrorHandler } from "../handlers/ErrorHandler";
 import { ComplimentRepository } from '../repositories/ComplimentRepository'
 import { UserRepository } from "../repositories/UserRepository";
 
@@ -15,13 +16,27 @@ class CreateComplimentService {
         const userRepository = getCustomRepository(UserRepository);
 
         if (user_sender === user_receiver) {
-            throw new Error('Receiver user cannot be equal Sender user. Is it easy to compliment ourselves, lets leave someone else do it');
+            const err = {
+                name: 'CreateComplimentFailed',
+                message: 'Receiver user cannot be equal Sender user',
+                statusCode: 400,
+                description: 'Is it easy to compliment ourselves, lets leave someone else do it'
+            }
+
+            throw new ErrorHandler(err);
         }
 
         const userReceiverExists = await userRepository.findOne(user_receiver);
 
         if (!userReceiverExists) {
-            throw new Error('User Receiver does not exists');
+            const err = {
+                name: 'CompliemntFailed',
+                message: 'User Receiver does not exists',
+                statusCode: 400,
+                description: 'There was an error processing your request'
+            }
+
+            throw new ErrorHandler(err);
         }
 
         const compliment = complimentRepository.create({
