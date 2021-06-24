@@ -5,16 +5,17 @@ interface IErrorHandler {
   description: string
 }
 
-class ErrorHandler extends Error {
-
+class ErrorHandler {
+  name: string;
+  message: string;
   statusCode: number
   description: string
 
   constructor({ message, name, description, statusCode }: IErrorHandler) {
-   super(message)
-   this.name = name,
-   this.description = description
-   this.statusCode = statusCode
+    this.name = name;
+    this.message = message;
+    this.description = description;
+    this.statusCode = statusCode;
   }
 }
 
