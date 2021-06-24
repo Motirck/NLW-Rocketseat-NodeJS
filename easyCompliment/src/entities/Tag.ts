@@ -17,7 +17,7 @@ class Tag {
     updated_at: Date;
 
     constructor() {
-        if (!this.id) { // Verifica se é criação de uma nova tag, caso sim gera um novo uuid
+        if (!this.id) { //  Check if it's a create of a new tag
             this.id = uuid();
         }
     }

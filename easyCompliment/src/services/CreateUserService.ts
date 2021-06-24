@@ -1,16 +1,17 @@
 import { getCustomRepository } from "typeorm";
 import { UserRepository } from "../repositories/UserRepository";
+import { hash } from 'bcryptjs'
 
 interface IUserRequest {
     name: string;
     email: string;
     admin?: boolean;
+    password: string;
 }
-
 
 class CreateUserService {
 
-    async execute({ name, email, admin }: IUserRequest) {
+    async execute({ name, email, admin = false, password }: IUserRequest) {
         const userRepository = getCustomRepository(UserRepository);
 
         if (!email)
@@ -18,13 +19,20 @@ class CreateUserService {
 
         const userAlreadyExists = await userRepository.findOne({ email });
 
-        if (userAlreadyExists)
+        console.log(userAlreadyExists);
+
+        if (userAlreadyExists) {
+            console.log('erro encontrado');
             throw new Error(`User already exists`);
+        }
+
+        const hashPassword = await hash(password, 8)
 
         const user = userRepository.create({
             name,
             email,
-            admin
+            admin,
+            password: hashPassword // It wouldn't necessary colon (:) if the name of the parameter would be the same
         });
 
         await userRepository.save(user);

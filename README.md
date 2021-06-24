@@ -1,26 +1,49 @@
-## Next Level Week 06 da Rocketseat - Nodejs
-Next Level Week da Rocketseat - Nodejs
+## Next Level Week 06 da Rocketseat - Nodejs 🚀🚀🚀
+---
 
-### Keywords
+<h3 align="center">Next Level Week of Rocketseat - Mission Node.js </h3>
+
+<p align="center">
+<img alt="Next Level Week Ticket - Ricardo" title="Next Level Week Ticket - Ricardo" src="https://user-images.githubusercontent.com/57419630/123095225-3b03e200-d404-11eb-826b-1e913d923f51.png"/>
+</p>
+
+### **Status**: 🚧 In Progress 🚧
+
+<br>
+
+[![nodejs-badge][nodejs-img]][nodejs]
+
+[nodejs-img]: https://img.shields.io/badge/Node.js-v14.17-green
+[nodejs]: https://nodejs.org/en/about/
+
+### Keywords 🔑
 - typescript -> ts
 - javascript -> js
 
-### Project Rules
+### Project Rules 📌
 - Users Registration 
-    - It isn't allowed register more than one user with the same email address
-    - It isn't allowed register user without email address
+    - [x] It isn't allowed register more than one user with the same email address
+    - [x] It isn't allowed register user without email address
 
 - Tags Registration
-    - It isn't allowed register more than one tag with the same name
-    - It isn't allowed register user without name
-    - It isn't allowed register a tag for non admin user
+    - [x] It isn't allowed register more than one tag with the same name
+    - [x] It isn't allowed register user without name
+    - [x] It isn't allowed register a tag for non admin user
 
 - Compliment Registration
     - It isn't allowed an user register a compliment for yourself
     - It isn't allowed register a compliment for invalid users
     - The user must be authenticated on the application
 
-### Necessary Commands
+<br>
+
+### Necessary Commands 
+---
+
+#### ⚠️Should you want to create this project from zero, run all of the commands below, if not, just run **npm install --global yarn** and **yarn install** instead⚠️
+
+<br>
+
 
 > npm install --global yarn
 
@@ -42,7 +65,7 @@ Next Level Week da Rocketseat - Nodejs
 
 > yarn typeorm migration:run
 
-> yarn typeorm entity:create -n User (do this after added in the **ormconfig.json** the code **"entitiesDir": "src/entity"** bellow)
+> yarn typeorm entity:create -n User (do this after added in the **ormconfig.json** the code **"entitiesDir": "src/entity"** below)
 
 ```json
 "cli": {
@@ -63,14 +86,36 @@ Next Level Week da Rocketseat - Nodejs
 
 > yarn typeorm entity:create -n Tag
 
+> yarn add jsonwebtoken
 
-### General Tips
+> yarn add @types/jsonwebtoken -D
+
+> yarn typeorm migration:create -n AlterUserAddColumnPassword
+
+> yarn typeorm migration:run
+
+>  yarn add bcryptjs
+
+> yarn add @types/bcryptjs -D
+
+> yarn typeorm migration:create -n CreateCompliments
+
+> yarn typeorm migration:run
+
+> yarn typeorm entity:create -n Compliment
+
+<br>
+
+### General Tips 💡
+---
 
 1) Useful commands:
 
 > yarn tsc (converte ts para js)
 
 > yarn dev (utilizado para rodar o projeto após a instalação do **ts-node-dev**)
+
+<br>
 
 2) Configurations below in package.json is used to transform the code js in code ts using te ts-node-dev in a automatic way.
 
@@ -79,5 +124,7 @@ Next Level Week da Rocketseat - Nodejs
     "dev": "ts-node-dev src/server.ts"
 }
 ```
+
 3) How to revert a migration:
+
 > yarn typeorm migration:revert

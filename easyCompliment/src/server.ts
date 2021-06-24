@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import express, { Request, Response, NextFunction } from 'express';
+import express from 'express';
 import 'express-async-errors';
 import { errorInterceptor } from './middlewares/errorInterceptor';
 
@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use(router); // Insert the routes in the express
 
-// Middleware
+// Call Middleware
 app.use(errorInterceptor);
 
 app.listen(3000, () => console.log('Server is running'));
