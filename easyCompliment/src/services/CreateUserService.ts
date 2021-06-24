@@ -9,7 +9,6 @@ interface IUserRequest {
     password: string;
 }
 
-
 class CreateUserService {
 
     async execute({ name, email, admin, password }: IUserRequest) {
@@ -20,8 +19,12 @@ class CreateUserService {
 
         const userAlreadyExists = await userRepository.findOne({ email });
 
-        if (userAlreadyExists)
+        console.log(userAlreadyExists);
+
+        if (userAlreadyExists) {
+            console.log('erro encontrado');
             throw new Error(`User already exists`);
+        }
 
         const hashPassword = await hash(password, 8)
 

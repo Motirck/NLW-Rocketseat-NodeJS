@@ -13,7 +13,7 @@ class Compliment {
 
     @JoinColumn({ name: 'user_sender' })
     @ManyToOne(() => User)
-    userSent: User
+    userSender: User
 
     @Column()
     user_receiver: string;
