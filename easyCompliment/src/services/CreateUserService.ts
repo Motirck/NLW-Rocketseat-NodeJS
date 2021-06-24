@@ -1,6 +1,7 @@
 import { getCustomRepository } from "typeorm";
 import { UserRepository } from "../repositories/UserRepository";
 import { hash } from 'bcryptjs'
+import { ErrorHandler } from "../handlers/ErrorHandler";
 
 interface IUserRequest {
     name: string;
@@ -14,16 +15,22 @@ class CreateUserService {
     async execute({ name, email, admin = false, password }: IUserRequest) {
         const userRepository = getCustomRepository(UserRepository);
 
+        const err = {
+            name: 'CreateUserFailed',
+            message: 'Email not informed',
+            statusCode: 400,
+            description: 'There was an error processing your request'
+        }
+
         if (!email)
-            throw new Error("Email not informed")
+            throw new ErrorHandler(err);
 
         const userAlreadyExists = await userRepository.findOne({ email });
 
-        console.log(userAlreadyExists);
-
         if (userAlreadyExists) {
-            console.log('erro encontrado');
-            throw new Error(`User already exists`);
+            const customError = err;
+            customError.message = 'User already exists'
+            throw new ErrorHandler(customError);
         }
 
         const hashPassword = await hash(password, 8)

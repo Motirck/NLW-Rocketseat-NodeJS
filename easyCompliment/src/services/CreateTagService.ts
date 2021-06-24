@@ -1,4 +1,5 @@
 import { getCustomRepository } from "typeorm";
+import { ErrorHandler } from "../handlers/ErrorHandler";
 import { TagRepository } from "../repositories/TagRepository";
 
 class CreateTagService {
@@ -6,13 +7,23 @@ class CreateTagService {
     async execute(name: string) {
         const tagRepository = getCustomRepository(TagRepository);
 
+        const err = {
+            name: 'CreateTagFailed',
+            message: 'Name not informed',
+            statusCode: 400,
+            description: 'There was an error processing your request'
+        }
+
         if (!name)
-            throw new Error("Name not informed")
+            throw new ErrorHandler(err)
 
         const tagAlreadyExists = await tagRepository.findOne({ name });
 
-        if (tagAlreadyExists)
-            throw new Error(`Tag already exists`);
+        if (tagAlreadyExists){
+            const customError = err;
+            customError.message = 'Tag already exists'
+            throw new ErrorHandler(customError);
+        }
 
         const tag = tagRepository.create({ name });
 

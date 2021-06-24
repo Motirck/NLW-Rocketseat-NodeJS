@@ -2,6 +2,7 @@ import { getCustomRepository } from "typeorm"
 import { compare } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
 import { UserRepository } from "../repositories/UserRepository"
+import { ErrorHandler } from "../handlers/ErrorHandler";
 
 interface IAuthenticateRequest {
     email: string;
@@ -15,14 +16,21 @@ class AuthenticateUserService {
 
         const user = await userRepository.findOne({ email });
 
+        const err = {
+            name: 'AuthenticationFailed',
+            message: 'Email/Password incorrect',
+            statusCode: 400,
+            description: 'There was an error processing your request authenticating the credentials'
+        }
+
         if (!user) {
-            throw new Error('Email/Password incorrect')
+            throw new ErrorHandler(err);
         }
 
         const matchPassword = await compare(password, user.password);
 
         if (!matchPassword) {
-            throw new Error('Email/Password incorrect')
+            throw new ErrorHandler(err)
         }
 
         const token = sign(
