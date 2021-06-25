@@ -106,6 +106,10 @@
 
 > yarn add class-transformer (It is a library that allows you to customize entities.)
 
+> yarn add cors (library needed when front-end makes API requests)
+
+> yarn add @types/cors -D
+
 <br>
 
 ### General Tips 💡
