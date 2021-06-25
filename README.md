@@ -104,6 +104,8 @@
 
 > yarn typeorm entity:create -n Compliment
 
+> yarn add class-transformer (It is a library that allows you to customize entities.)
+
 <br>
 
 ### General Tips 💡
