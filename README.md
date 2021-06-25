@@ -31,9 +31,9 @@
     - [x] It isn't allowed register a tag for non admin user
 
 - Compliment Registration
-    - It isn't allowed an user register a compliment for yourself
-    - It isn't allowed register a compliment for invalid users
-    - The user must be authenticated on the application
+    - [x] It isn't allowed an user register a compliment for yourself
+    - [x] It isn't allowed register a compliment for invalid users
+    - [x] The user must be authenticated on the application
 
 <br>
 
