@@ -86,6 +86,24 @@
 
 > yarn typeorm entity:create -n Tag
 
+> yarn add jsonwebtoken
+
+> yarn add @types/jsonwebtoken -D
+
+> yarn typeorm migration:create -n AlterUserAddColumnPassword
+
+> yarn typeorm migration:run
+
+>  yarn add bcryptjs
+
+> yarn add @types/bcryptjs -D
+
+> yarn typeorm migration:create -n CreateCompliments
+
+> yarn typeorm migration:run
+
+> yarn typeorm entity:create -n Compliment
+
 <br>
 
 ### General Tips 💡

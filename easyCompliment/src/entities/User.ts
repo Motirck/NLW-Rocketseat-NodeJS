@@ -16,6 +16,9 @@ class User {
     @Column()
     admin: boolean;
 
+    @Column()
+    password: string;
+
     @CreateDateColumn()
     created_at: Date;
 
@@ -23,7 +26,7 @@ class User {
     updated_at: Date;
 
     constructor() {
-        if (!this.id) { // Verifica se é criação de um novo usuário, caso sim gera um novo uuid
+        if (!this.id) { // Check if it's a create of a new user
             this.id = uuid();
         }
     }
