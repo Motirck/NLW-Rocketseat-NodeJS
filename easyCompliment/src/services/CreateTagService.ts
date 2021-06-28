@@ -21,7 +21,8 @@ class CreateTagService {
 
         if (tagAlreadyExists){
             const customError = err;
-            customError.message = 'Tag already exists'
+            customError.message = 'Tag already exists';
+            customError.statusCode = 422;
             throw new ErrorHandler(customError);
         }
 

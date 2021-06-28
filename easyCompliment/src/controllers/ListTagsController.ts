@@ -9,6 +9,15 @@ class ListTagsController {
 
         return res.send(tags);
     }
+
+    async handleOne(req: Request, res: Response) {
+        const { tagId } = req.params;
+        const listTagsService = new ListTagsService();
+
+        const tags = await listTagsService.executeOne(tagId);
+
+        return res.send(tags);
+    }
 }
 
 export { ListTagsController }
