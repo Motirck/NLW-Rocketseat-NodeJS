@@ -1,0 +1,484 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "EasyCompliment API",
+        "description": "This API aims to facilitate the registration and visualization of compliments among users based on a great jargon that goes like this: 'Kindness breeds kindness'",
+        "termsOfService": "http://localhost:3000/terms",
+        "contact": {
+            "email": "ricardo.alves.p001@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000/v1",
+            "description": "API of test (development)"
+        }
+    ],
+    "paths": {
+        "/tags": {
+            "post": {
+                "summary": "Tag Registration",
+                "description": "This route will be able to register a new tag",
+                "tag": [
+                    "Tags"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Tags"
+                            },
+                            "examples": {
+                                "tag": {
+                                    "value": {
+                                        "name": "inspirador(a)"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "400": {
+                        "description": "Name not informed"
+                    },
+                    "422": {
+                        "description": "Tag already exisits"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type:": "object",
+                                    "$ref": "#/components/schemas/Tags"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "description": "List all tags",
+                "summary": "List all tags in database",
+                "tag": [
+                    "Tags"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type:": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Tags"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tags/{tagId}": {
+            "get": {
+                "description": "List specific tag",
+                "summary": "List specific tag in database",
+                "tag": [
+                    "Tags"
+                ],
+                "parameters": [
+                    {
+                        "name": "tagId",
+                        "in": "path",
+                        "description": "Tag id for database query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type:": "object",
+                                    "$ref": "#/components/schemas/Tags"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/compliments": {
+            "post": {
+                "summary": "Compliment Registration",
+                "description": "This route will be able to register a new compliment",
+                "tag": [
+                    "Compliments"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Compliments"
+                            },
+                            "examples": {
+                                "tag": {
+                                    "value": {
+                                        "tag_id": "a62cd254-21e1-41c9-bb27-fbce5aee6ad2",
+                                        "user_receiver": "0e54bc79-2351-4a2c-8901-0d3a091c3631",
+                                        "message": "Paty arrasa mesmooo!"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "400": {
+                        "description": "Is it easy to compliment ourselves, lets leave someone else do it"
+                    },
+                    "404": {
+                        "description": "User Receiver does not exists"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type:": "object",
+                                    "$ref": "#/components/schemas/Compliments"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/compliments/receive": {
+            "get": {
+                "description": "List Compliments Receive By User",
+                "summary": "List Compliments Receive By User",
+                "tag": [
+                    "Compliments"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type:": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Compliments"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/compliments/sent": {
+            "get": {
+                "description": "List Compliments Submitted By User",
+                "summary": "List Compliments Submitted By User",
+                "tag": [
+                    "Compliments"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type:": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Compliments"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users": {
+            "post": {
+                "summary": "User Registration",
+                "description": "This route will be able to register a new user",
+                "tag": [
+                    "Users"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Users"
+                            },
+                            "examples": {
+                                "tag": {
+                                    "value": {
+                                        "name": "Joseph Mark",
+                                        "password": "12345",
+                                        "email": "joseph@joseph.com",
+                                        "admin": true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "400": {
+                        "description": "Email not informed"
+                    },
+                    "422": {
+                        "description": "User already exisits"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type:": "object",
+                                    "$ref": "#/components/schemas/Users"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/all": {
+            "get": {
+                "description": "List all users",
+                "summary": "List all users in database",
+                "tag": [
+                    "Users"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type:": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Users"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/non-admin": {
+            "get": {
+                "description": "List all non-admin users",
+                "summary": "List all non-admin users in database",
+                "tag": [
+                    "Users"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type:": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Users"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/admin": {
+            "get": {
+                "description": "List all admin users",
+                "summary": "List all admin users in database",
+                "tag": [
+                    "Users"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type:": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Users"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "summary": "User Authentication",
+                "description": "This route will be able to authenticate teh user",
+                "tag": [
+                    "Login"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Login"
+                            },
+                            "examples": {
+                                "tag": {
+                                    "value": {
+                                        "email": "marcos@marcos.com.br",
+                                        "password": "12345"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Email/Password incorrect"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type:": "object",
+                                    "$ref": "#/components/schemas/Login"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Tags": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Compliments": {
+                "type": "object",
+                "properties": {
+                    "tag_id": {
+                        "type": "string"
+                    },
+                    "user_receiver": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Users": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "admin": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "Login": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}

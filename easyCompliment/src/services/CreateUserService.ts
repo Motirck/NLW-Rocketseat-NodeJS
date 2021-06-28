@@ -29,7 +29,8 @@ class CreateUserService {
 
         if (userAlreadyExists) {
             const customError = err;
-            customError.message = 'User already exists'
+            customError.message = 'User already exists';
+            customError.statusCode = 422;
             throw new ErrorHandler(customError);
         }
 

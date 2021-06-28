@@ -32,7 +32,7 @@ class CreateComplimentService {
             const err = {
                 name: 'CompliemntFailed',
                 message: 'User Receiver does not exists',
-                statusCode: 400,
+                statusCode: 404,
                 description: 'There was an error processing your request'
             }
 

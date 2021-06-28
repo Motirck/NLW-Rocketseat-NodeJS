@@ -112,6 +112,16 @@
 
 <br>
 
+#### Commands that were used to do the API documentation using Swagger
+
+<br>
+
+> yarn add swagger-ui-express
+
+> yarn add @types/swagger-ui-express -D
+
+<br>
+
 ### General Tips 💡
 ---
 
