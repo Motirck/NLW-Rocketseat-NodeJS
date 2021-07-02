@@ -21,4 +21,4 @@ app.use('/v1', router); // Insert the routes in the express
 // Call Middleware
 app.use(errorInterceptor);
 
-app.listen(3000, () => console.log('Server is running'));
+app.listen(3000, () => console.log('Server is running on port 3000'));

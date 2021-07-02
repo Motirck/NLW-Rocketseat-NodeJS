@@ -9,7 +9,6 @@ import { ListComplimentsReceivedUserController } from './controllers/ListComplim
 import { ListComplimentsSubmittedUserController } from './controllers/ListComplimentsSubmittedUserController';
 import { ListTagsController } from './controllers/ListTagsController';
 import { ListUsersController } from './controllers/ListUsersController';
-import { ServiceTermsController } from './controllers/ServiceTermsController';
 
 const router = Router();
 
@@ -21,7 +20,6 @@ const listComplimentsReceivedUserController = new ListComplimentsReceivedUserCon
 const listComplimentsSubmittedUserController = new ListComplimentsSubmittedUserController();
 const listTagsController = new ListTagsController();
 const listUsersController = new ListUsersController();
-const serviceTermsController = new ServiceTermsController();
 
 router.post('/tags', ensureAuthenticated, ensureAdmin, createTagController.handle);
 router.post('/users', createUserController.handle);
@@ -34,6 +32,6 @@ router.get('/tags/:tagId', listTagsController.handleOne);
 router.get('/users/admin', ensureAuthenticated, ensureAdmin, listUsersController.handleAdminUsers);
 router.get('/users/non-admin', ensureAuthenticated, ensureAdmin, listUsersController.handleNonAdminUsers);
 router.get('/users/all', ensureAuthenticated, ensureAdmin, listUsersController.handleAll);
-router.get('/terms', serviceTermsController.handle);
+router.get('/terms', (req, res) => { return res.json({ "message": "Service Terms API" }) });
 
 export { router };

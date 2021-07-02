@@ -3,7 +3,7 @@
     "info": {
         "title": "EasyCompliment API",
         "description": "This API aims to facilitate the registration and visualization of compliments among users based on a great jargon that goes like this: 'Kindness breeds kindness'",
-        "termsOfService": "http://localhost:3000/terms",
+        "termsOfService": "http://localhost:3000/v1/terms",
         "contact": {
             "email": "ricardo.alves.p001@gmail.com"
         },
