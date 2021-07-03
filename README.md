@@ -15,11 +15,6 @@
 
 <br>
 
-[![nodejs-badge][nodejs-img]][nodejs]
-
-[nodejs-img]: https://img.shields.io/badge/Node.js-v14.17-green
-[nodejs]: https://nodejs.org/en/about/
-
 ### Keywords 🔑
 - typescript -> ts
 - javascript -> js
