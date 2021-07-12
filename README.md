@@ -48,15 +48,17 @@
 
 > yarn init -y
 
-> yarn add typescript -D (instala o ts apenas em desenvolvimento)
+> yarn add typescript -D (install TS only in development)
 
-> yarn tsc --init (inicializa o ts)
+> yarn tsc --init (create the tsconfig.json file)
+
+> yarn tsc
 
 > yarn add express
 
 > yarn add @types/express -D
 
-> yarn add ts-node-dev -D (converte automaticamente ts para js)
+> yarn add ts-node-dev -D (automatically convert TS to JS)
 
 > yarn add typeorm reflect-metadata sqlite3
 
