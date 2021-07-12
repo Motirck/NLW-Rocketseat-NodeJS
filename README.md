@@ -52,8 +52,6 @@
 
 > yarn tsc --init (create the tsconfig.json file)
 
-> yarn tsc
-
 > yarn add express
 
 > yarn add @types/express -D
