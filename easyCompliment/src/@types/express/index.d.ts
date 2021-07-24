@@ -9,9 +9,9 @@
  */
 
 /**
- * IMPORTANT: Navegue até tsconfig.json e descomente o
- * "typeRoots": [], e logo após coloque o caminho criado.
- * Ficará da seguinte forma: "typeRoots": ["./src/@types"]
+ * IMPORTANT: Navigate to tsconfig.json and uncomment the
+ * "typeRoots": [], and then put the created path.
+ * It will look like this: "typeRoots": ["./src/@types"]
  */
 declare namespace Express {
     export interface Request {
